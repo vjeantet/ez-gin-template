@@ -77,6 +77,9 @@ func (r Render) AddFromFiles(name string, files ...string) *template.Template {
 }
 
 func (r Render) Instance(name string, data interface{}) render.Render {
+	if r.Debug == true {
+		r.Init()
+	}
 	return render.HTML{
 		Template: r.Templates[name],
 		Data:     data,
